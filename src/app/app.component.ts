@@ -33,6 +33,7 @@ import { FormsModule } from '@angular/forms';
           minus
         </button>
         <button type="button" (click)="incrementValue()">plus</button>
+        <button type="button" (click)="resetValue()">reset</button>
       </div>
       <div class="flex gap-4">
         <p>count in base {{ radix() }} : {{ numerationValue() }}</p>
@@ -125,6 +126,10 @@ export class AppComponent {
 
   decrementValue(): void {
     this.value.update((n) => n - 1);
+  }
+
+  resetValue(): void {
+    this.value.set(0);
   }
 }
 
