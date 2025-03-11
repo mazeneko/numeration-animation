@@ -36,9 +36,6 @@ import { FormsModule } from '@angular/forms';
         <button type="button" (click)="resetValue()">reset</button>
       </div>
       <div class="flex gap-4">
-        <p>count in base {{ radix() }} : {{ numerationValue() }}</p>
-      </div>
-      <div class="flex gap-4">
         <label>showCellValue</label>
         <input type="checkbox" [(ngModel)]="showCellValue" />
       </div>
@@ -47,7 +44,6 @@ import { FormsModule } from '@angular/forms';
         <input type="checkbox" [(ngModel)]="useAlphabet" />
       </div>
     </div>
-
     <div
       class="flex flex-col-reverse flex-wrap-reverse place-content-end"
       [style.height]="containerHeight() + 'px'"
@@ -68,6 +64,9 @@ import { FormsModule } from '@angular/forms';
           }
         </div>
       }
+    </div>
+    <div class="flex flex-row-reverse">
+      <p>count in base {{ radix() }} : {{ numerationValue() }}</p>
     </div>
   `,
   // TODO 最低限のスタイルだけとりあえずcomponentを作らずにstylesで書いています
