@@ -41,6 +41,10 @@ import { FormsModule } from '@angular/forms';
         <label>showCellValue</label>
         <input type="checkbox" [(ngModel)]="showCellValue" />
       </div>
+      <div class="flex gap-4">
+        <label>useAlphabet</label>
+        <input type="checkbox" [(ngModel)]="useAlphabet" />
+      </div>
     </div>
 
     <div
@@ -55,7 +59,11 @@ import { FormsModule } from '@angular/forms';
           [class.bg-gray-100]="!cell.show"
         >
           @if (showCellValue()) {
-            {{ cell.value }}
+            @if (useAlphabet()) {
+              {{ cell.value.toString(radix()) }}
+            } @else {
+              {{ cell.value }}
+            }
           }
         </div>
       }
@@ -74,6 +82,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   readonly showCellValue = signal(true);
+  readonly useAlphabet = signal(false);
   readonly radix = signal(10);
   readonly cellCountPerCol = computed(() => this.radix() - 1);
   readonly cellSize = 32;
